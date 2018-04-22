@@ -15,9 +15,8 @@ import javax.inject.Singleton;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 
-
 /**
- * Created by mmena on 4/21/18.
+ * Cognito Provide for the AWS credentials
  */
 @Singleton
 public class CognitoCredentialProvider implements AWSCredentialsProvider {
@@ -38,21 +37,7 @@ public class CognitoCredentialProvider implements AWSCredentialsProvider {
         );
 
         awsSessionCredentials = Observable.just(cognitoCredentialProvider.getCredentials())
-               .subscribeOn(Schedulers.io()).blockingSingle();
-
-        /**8
-        Observable.fromCallable(new Callable<AWSSessionCredentials>() {
-            @Override
-            public AWSSessionCredentials call() throws Exception {
-                return cognitoCredentialProvider.getCredentials();
-            }
-        }).subscribeOn(Schedulers.io()).subscribe(new Consumer<AWSSessionCredentials>() {
-            @Override
-            public void accept(AWSSessionCredentials credentials) throws Exception {
-                awsSessionCredentials = credentials;
-            }
-        });
-         **/
+                .subscribeOn(Schedulers.io()).blockingSingle();
     }
 
     @Override
