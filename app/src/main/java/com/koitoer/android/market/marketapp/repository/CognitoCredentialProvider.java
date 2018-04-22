@@ -33,7 +33,7 @@ public class CognitoCredentialProvider implements AWSCredentialsProvider {
         this.context = context;
         cognitoCredentialProvider = new CognitoCachingCredentialsProvider(
                 context,
-                "us-east-1:6e2e0515-fc3b-45c1-908e-616f94b65bd0", // Identity pool ID
+                "us-east-1:", // Identity pool ID
                 Regions.US_EAST_1 // Region
         );
 
